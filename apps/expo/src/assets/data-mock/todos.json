@@ -1,0 +1,42 @@
+[
+  {
+    "id": "2",
+    "createdAt": 1689504961894,
+    "completedAt": 1689504999081,
+    "user": "guest",
+    "description": "to do item 2"
+  },
+  {
+    "id": "3",
+    "createdAt": 1689504961894,
+    "dueDate": 1689505070023,
+    "user": "guest",
+    "description": "to do item 3"
+  },
+  {
+    "id": "4",
+    "createdAt": 1689504961894,
+    "user": "guest",
+    "description": "to do item 4"
+  },
+  {
+    "id": "5",
+    "createdAt": 1689504961894,
+    "user": "guest",
+    "description": "to do item 5"
+  },
+  {
+    "id": "6",
+    "createdAt": 1689504961894,
+    "user": "user1",
+    "description": "to do item 6"
+  },
+  {
+    "id": "1",
+    "user": "admin",
+    "description": "do nothing",
+    "createdAt": 1689504961894,
+    "dueDate": 1703980800000,
+    "isImportant": true
+  }
+]

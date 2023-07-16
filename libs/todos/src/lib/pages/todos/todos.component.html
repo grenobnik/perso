@@ -1,0 +1,87 @@
+<div class="card mt-4">
+  <p-table
+    *ngIf="todos$ | async as todos"
+    [value]="todos.value"
+    [tableStyle]="{ 'min-width': '60rem' }"
+    [loading]="todos.isLoading"
+  >
+    <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+        List of To Do
+        <p-button
+          icon="pi pi-plus"
+          label="New TODO item"
+          routerLink="todo"
+        ></p-button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th scope="col">user</th>
+        <th scope="col">description</th>
+        <th scope="col">created</th>
+        <th scope="col">completed</th>
+        <th scope="col">due</th>
+        <th scope="col">actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-todo>
+      <tr>
+        <td>{{ todo.user }}</td>
+        <td>{{ todo.description }}</td>
+        <td>{{ todo.createdAt | date }}</td>
+        <td>{{ todo.completedAt | date }}</td>
+        <td>{{ todo.dueDate | date }}</td>
+        <td>
+          <p-button
+            icon="pi pi-check"
+            [styleClass]="
+              todo.completedAt
+                ? 'p-button-success'
+                : 'p-button-outlined p-button-success'
+            "
+            [disabled]="todo.completedAt"
+            (onClick)="markAsCompleted(todo.id)"
+          ></p-button>
+          <p-button
+            icon="pi pi-pencil"
+            class="ml-2"
+            [styleClass]="
+              todo.completedAt
+                ? 'p-button-outlined p-button-secondary'
+                : 'p-button-outlined p-button-primary'
+            "
+            [disabled]="todo.completedAt"
+            [routerLink]="'todo/' + todo.id"
+          ></p-button>
+          <p-tag
+            *ngIf="todo.completedAt"
+            icon="pi pi-check"
+            severity="success"
+            value="done"
+            class="ml-2"
+          ></p-tag>
+          <p-tag
+            *ngIf="pastDueDate(todo)"
+            icon="pi pi-exclamation-triangle"
+            severity="danger"
+            value="due date"
+            class="ml-2"
+          ></p-tag>
+          <p-tag
+            *ngIf="todo.isImportant"
+            icon="pi pi-exclamation-circle"
+            severity="warning"
+            value="important"
+            class="ml-2"
+          ></p-tag>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        In total there are {{ todos.value.length }} TODOs.
+      </div>
+    </ng-template>
+  </p-table>
+</div>

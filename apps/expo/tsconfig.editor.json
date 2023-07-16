@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["src/**/*.ts", "../../libs/todos/src/lib/services/fake-api-to-do.service.ts", "../../libs/todos/src/lib/data-models/to-do.ts", "../../libs/auth/src/lib/data-models/api-response.ts"],
+  "compilerOptions": {
+    "types": ["jest", "node"]
+  }
+}

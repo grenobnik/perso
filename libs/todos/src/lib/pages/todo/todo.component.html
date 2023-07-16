@@ -1,0 +1,73 @@
+<form
+  [formGroup]="formGroup"
+  class="my-auto flex justify-content-center align-items-center"
+  style="height: 100vh"
+>
+  <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6 m-auto">
+    <div class="text-center mb-5">
+      <div class="text-900 text-3xl font-medium mb-3">
+        Create or edit todo item
+      </div>
+    </div>
+    <div>
+      <label for="description" class="block text-900 font-medium mb-2">
+        Description
+      </label>
+      <textarea
+        rows="5"
+        formControlName="description"
+        id="description"
+        pInputTextarea
+        class="w-full mb-3"
+      ></textarea>
+      <p-message
+        *ngIf="
+          formGroup.controls.description.errors &&
+          formGroup.controls.description.touched
+        "
+        severity="error"
+        text="minimum length 10 chars"
+      ></p-message>
+      <label for="dueDate" class="block text-900 font-medium mt-3 mb-2">
+        due date (optional)
+      </label>
+      <p-calendar
+        id="dueDate"
+        formControlName="dueDate"
+        [showIcon]="true"
+      ></p-calendar>
+      <div class="mt-3 flex align-items-center gap-1">
+        <p-checkbox
+          formControlName="isImportant"
+          inputId="isImportant"
+          [value]="true"
+        ></p-checkbox>
+        <label for="isImportant">mark as important</label>
+      </div>
+      <p-messages
+        *ngIf="messages"
+        [(value)]="messages"
+        [enableService]="false"
+        [closable]="false"
+        class="mt-3"
+      ></p-messages>
+      <button
+        pButton
+        pRipple
+        label="Validate"
+        icon="pi pi-check"
+        class="w-full mt-4"
+        type="button"
+        (click)="modifyTodoId ? modifyTodo() : createTodo()"
+      ></button>
+      <p-button
+        pRipple
+        styleClass="p-button-secondary w-full mt-3"
+        label="Back to list"
+        icon="pi pi-chevron-left"
+        type="button"
+        routerLink=""
+      ></p-button>
+    </div>
+  </div>
+</form>

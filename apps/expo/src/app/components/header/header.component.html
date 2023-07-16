@@ -1,0 +1,19 @@
+<p-menu #menu [model]="menuItems" [popup]="true" appendTo="body"></p-menu>
+<div class="card">
+  <p-menubar [model]="items ?? []">
+    <ng-template pTemplate="start">
+      <img src="/assets/logo.svg" height="40" class="mr-2" alt="logo" />
+    </ng-template>
+    <ng-template pTemplate="end">
+      <div class="flex-row">
+        <p-avatar
+          [label]="(userNick$ | async) ?? ''"
+          styleClass="mr-2"
+          size="large"
+          shape="circle"
+          (click)="menu.toggle($event)"
+        ></p-avatar>
+      </div>
+    </ng-template>
+  </p-menubar>
+</div>
