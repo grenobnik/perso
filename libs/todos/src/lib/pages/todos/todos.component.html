@@ -52,7 +52,7 @@
                 : 'p-button-outlined p-button-primary'
             "
             [disabled]="todo.completedAt"
-            [routerLink]="'todo/' + todo.id"
+            [routerLink]="todo.completedAt ? null : 'todo/' + todo.id"
           ></p-button>
           <p-tag
             *ngIf="todo.completedAt"

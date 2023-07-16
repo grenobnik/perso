@@ -38,10 +38,6 @@ export class TodoComponent implements OnInit {
   messages?: Message[];
 
   ngOnInit(): void {
-    this.formGroup.valueChanges.subscribe((value) => {
-      console.log(value);
-      console.log(this.formGroup);
-    });
     this.activatedRoute.paramMap
       .pipe(
         switchMap((params) => {

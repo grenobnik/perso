@@ -106,7 +106,7 @@ export class FakeApiToDoService {
   ): Observable<ApiResponse> {
     return this.authService.user$.pipe(
       map((connectedUser) => {
-        if (connectedUser) {
+        if (connectedUser?.user) {
           const id = this.window.crypto.randomUUID();
           const user = connectedUser.user;
           const description = todo.description;
@@ -129,6 +129,7 @@ export class FakeApiToDoService {
               },
             ],
           });
+          return { code: 200, message: 'todo item created', success: true };
         }
         return { code: 403, message: 'not found', success: false };
       })
